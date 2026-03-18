@@ -275,13 +275,20 @@
       letter-spacing: 0.05em;
     }
 
-    .success-msg {
+    .success-msg, .error-msg {
       display: none;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.8rem;
-      color: var(--accent);
       letter-spacing: 0.05em;
       margin-top: 1rem;
+    }
+
+    .success-msg {
+      color: var(--accent);
+    }
+
+    .error-msg {
+      color: #d87c7c;
     }
 
     /* FOOTER */
@@ -415,10 +422,11 @@
       <p>Get new entries straight to your inbox. No spam. Just a sales guy learning to build in public.</p>
       <form class="email-form" id="subscribeForm" action="https://formspree.io/f/xpqykndp" method="POST">
         <input type="email" name="email" id="emailInput" placeholder="your@email.com" required />
-        <button type="submit">Follow Along</button>
+        <button type="submit" id="submitBtn">Follow Along</button>
       </form>
       <p class="subscribe-note">No pitch. No cadence. Just the journal.</p>
       <p class="success-msg" id="successMsg">You're in. Next entry lands in your inbox.</p>
+      <p class="error-msg" id="errorMsg">Something went wrong. Please try again.</p>
     </section>
 
     <footer>
@@ -431,10 +439,22 @@
   <script>
     // Handle Formspree submission with custom success message
     const form = document.getElementById('subscribeForm');
+    const emailInput = document.getElementById('emailInput');
+    const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Reset states
+      emailInput.style.borderColor = '';
+      errorMsg.style.display = 'none';
+      successMsg.style.display = 'none';
+
+      // Disable button during submission
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
 
       const formData = new FormData(form);
 
@@ -448,13 +468,26 @@
         });
 
         if (response.ok) {
+          // Success - hide form and show success message
           form.style.display = 'none';
           successMsg.style.display = 'block';
         } else {
-          document.getElementById('emailInput').style.borderColor = '#8b4a4a';
+          // Server responded but with an error
+          const data = await response.json();
+          emailInput.style.borderColor = '#8b4a4a';
+          errorMsg.textContent = data.error || 'Something went wrong. Please try again.';
+          errorMsg.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Follow Along';
         }
       } catch (error) {
-        document.getElementById('emailInput').style.borderColor = '#8b4a4a';
+        // Network error or other fetch failure
+        console.error('Submission error:', error);
+        emailInput.style.borderColor = '#8b4a4a';
+        errorMsg.textContent = 'Network error. Please check your connection and try again.';
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Follow Along';
       }
     });
   </script>
