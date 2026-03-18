@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KelsoCodes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e0e0e;
+      --surface: #161616;
+      --border: #2a2a2a;
+      --text: #e8e4dc;
+      --muted: #6b6760;
+      --accent: #c8a96e;
+      --accent-dim: #7a6340;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* GRAIN OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* HEADER */
+    header {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .wordmark {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .wordmark span {
+      color: var(--muted);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero .bio {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    .hero .bio strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* JOURNAL SECTION */
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-dim);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .journal {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .post-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    .post-body {
+      font-size: 0.98rem;
+      color: #c8c4bc;
+      line-height: 1.85;
+    }
+
+    .post-body p {
+      margin-bottom: 1.2rem;
+    }
+
+    .post-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .post-body .lesson {
+      border-left: 2px solid var(--accent-dim);
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+      color: var(--text);
+    }
+
+    .post-body .lesson strong {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 500;
+      color: var(--accent);
+      display: block;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .tags {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    /* COMING SOON */
+    .coming-soon {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+
+    .coming-soon p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    .coming-soon p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* EMAIL CAPTURE */
+    .subscribe {
+      padding: 3.5rem 0;
+      animation: fadeUp 0.6s ease 0.4s both;
+    }
+
+    .subscribe p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      max-width: 480px;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .email-form input {
+      flex: 1;
+      min-width: 220px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+      outline: none;
+      border-radius: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .email-form input::placeholder { color: var(--muted); }
+    .email-form input:focus { border-color: var(--accent-dim); }
+
+    .email-form button {
+      background: var(--accent);
+      color: #0e0e0e;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .email-form button:hover { opacity: 0.85; }
+
+    .subscribe-note {
+      margin-top: 0.75rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .success-msg {
+      display: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-top: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      animation: fadeUp 0.6s ease 0.5s both;
+    }
+
+    footer p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .container { padding: 0 1.25rem; }
+      .hero { padding: 2.5rem 0 2rem; }
+      .email-form { flex-direction: column; }
+      .email-form input, .email-form button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <div class="wordmark">Kelso<span>Codes</span>.com</div>
+    </header>
+
+    <section class="hero">
+      <h1>A sales guy who <em>probably</em> shouldn't be building software.</h1>
+      <p class="bio">
+        <strong>25 years in enterprise sales.</strong> No CS degree. No dev team. Just real problems worth solving and enough curiosity to be dangerous. Building AI-powered applications on my own time, with my own money, sharing everything I learn along the way.
+      </p>
+    </section>
+
+    <section class="journal">
+      <div class="section-label">Journal — Entry 001</div>
+
+      <div class="post-meta">March 2026 &nbsp;/&nbsp; Six months in</div>
+
+      <h2 class="post-title">Nobody taught me how to build software. In fact I still don't know how to build software.</h2>
+
+      <div class="post-body">
+
+        <p>Maybe one day. Maybe not.</p>
+
+        <p>I'm a 25-year sales professional who would honestly rather be standing in a river chasing steelhead. But the fish aren't biting and the AI is.</p>
+
+        <p>Over the last six months I've built four AI-powered applications, on my own time, with my own money, learning everything from scratch. My accountant is not impressed. But some of my peers are. That's good enough for me. For now.</p>
+
+        <p>If you're curious about how to do the same, here's what someone told me:</p>
+
+        <div class="lesson">
+          <strong>01. Start with the spec, not the code</strong>
+          Draw your data model before you write a single line of code. Map your entity relationships. Define how your data moves between services before those services exist. The functional design document isn't paperwork. It's the moment you find out whether you actually understand the problem. Skip it and you'll rebuild the same thing twice. I know this because I rebuilt the same thing twice. Or more.
+        </div>
+
+        <div class="lesson">
+          <strong>02. Treat security like it's day one</strong>
+          Because it is. Identity management, MFA, role-based access control. These aren't features you add later. They're decisions that shape everything underneath them. By the time you're thinking about security at the end, your architecture is already working against you. And so is your sleep schedule.
+        </div>
+
+        <div class="lesson">
+          <strong>03. Your framework is a long-term relationship</strong>
+          Whatever you choose, understand what you're committing to. Flexibility early has a cost as complexity grows. Changing it later isn't refactoring. It's starting over. With coffee. Lots of coffee.
+        </div>
+
+        <div class="lesson">
+          <strong>04. Stop thinking about single models</strong>
+          Start thinking about systems. I use Perplexity for real-time research, Claude for reasoning and strategy, and Gemini when I need a different perspective on a hard problem. A visual workflow automation tool ties it all together. Google NotebookLM turns documents into audio intelligence. The real power isn't any one tool. It's knowing how to connect them.
+        </div>
+
+        <div class="lesson">
+          <strong>05. Data design is the job nobody talks about</strong>
+          How your services pass information to each other, what goes in, what comes back, what gets stored, determines whether your system is reliable or fragile. Get the contract right. Your future self will either thank you or have some very strong feelings about your past self. I'm prepared for harsh words from my future self.
+        </div>
+
+        <p>And the one thing no tool gives you: knowing the problem deeply enough to build the right solution. That still comes from you.</p>
+
+        <p>I'll keep sharing what I learn as I build. If this is useful, follow along.</p>
+
+        <p style="color: var(--muted); font-size: 0.88rem;">Thanks to Ryan Clark, Stephen Thorne and Kevin West. And to Rob Wyse and Shamis Thomson.</p>
+
+        <div class="tags">
+          <span class="tag">#AI</span>
+          <span class="tag">#BuildingWithAI</span>
+          <span class="tag">#LearnWithMe</span>
+          <span class="tag">#ClaudeCode</span>
+          <span class="tag">#Python</span>
+          <span class="tag">#Auth0</span>
+          <span class="tag">#AILeadership</span>
+          <span class="tag">#BuildingInPublic</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="coming-soon">
+      <div class="section-label">What's Next</div>
+      <p>
+        Every two weeks a new entry drops. <strong>Honest. Humorous. Useful.</strong> The wins, the rebuilds, the 11 PM debugging sessions, and whatever the AI taught me that I probably should have already known. No polish. No filter. Just the actual journey.
+      </p>
+    </section>
+
+    <section class="subscribe">
+      <div class="section-label">Follow Along</div>
+      <p>Get new entries straight to your inbox. No spam. Just a sales guy learning to build in public.</p>
+      <form class="email-form" id="subscribeForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <input type="email" name="email" id="emailInput" placeholder="your@email.com" required />
+        <button type="submit">Follow Along</button>
+      </form>
+      <p class="subscribe-note">No pitch. No cadence. Just the journal.</p>
+      <p class="success-msg" id="successMsg">You're in. Next entry lands in your inbox.</p>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 KelsoCodes.com</p>
+      <p><a href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a></p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Handle Formspree submission with custom success message
+    const form = document.getElementById('subscribeForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          document.getElementById('emailInput').style.borderColor = '#8b4a4a';
+        }
+      } catch (error) {
+        document.getElementById('emailInput').style.borderColor = '#8b4a4a';
+      }
+    });
+  </script>
+
+</body>
+</html>
