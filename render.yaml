@@ -14,3 +14,7 @@ services:
       - path: /*
         name: Referrer-Policy
         value: strict-origin-when-cross-origin
+    routes:
+      - type: rewrite
+        source: /admin
+        destination: /admin/index.html
