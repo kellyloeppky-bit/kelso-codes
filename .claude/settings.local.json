@@ -4,7 +4,9 @@
       "Bash(git init:*)",
       "Bash(gh repo create:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: KelsoCodes.com static site\n\n- Add index.html with journal entry and email capture\n- Integrate Formspree for email subscriptions\n- Add render.yaml for Render deployment\n- Add .gitignore\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: KelsoCodes.com static site\n\n- Add index.html with journal entry and email capture\n- Integrate Formspree for email subscriptions\n- Add render.yaml for Render deployment\n- Add .gitignore\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

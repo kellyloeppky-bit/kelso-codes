@@ -5,10 +5,6 @@
   # Publish directory (Eleventy output)
   publish = "_site"
 
-# Netlify Functions configuration
-[functions]
-  directory = "netlify/functions"
-
 # Redirect rules for clean URLs
 [[redirects]]
   from = "/admin"
