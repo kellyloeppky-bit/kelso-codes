@@ -14,7 +14,13 @@ services:
       - path: /*
         name: Referrer-Policy
         value: strict-origin-when-cross-origin
+      - path: /admin/config.yml
+        name: Content-Type
+        value: text/yaml; charset=utf-8
     routes:
       - type: rewrite
         source: /admin
         destination: /admin/index.html
+      - type: rewrite
+        source: /admin/config.yml
+        destination: /admin/config.yml
