@@ -7,6 +7,14 @@
   <!-- Explicitly tell Decap CMS where to find config.yml -->
   <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Initialize Netlify Identity with explicit API URL for external domain -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.init({
+        APIUrl: "https://tangerine-starship-1f42af.netlify.app/.netlify/identity"
+      });
+    }
+  </script>
 </head>
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
