@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: kellyloeppky-bit/kelso-codes
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: "src/assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "journal"
+    label: "Journal Entries"
+    folder: "src/journal"
+    create: true
+    slug: "{{year}}-{{month}}-entry-{{fields.entryNumber}}"
+    fields:
+      - {label: "Entry Number", name: "entryNumber", widget: "number", value_type: "int"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Date Display", name: "dateDisplay", widget: "string", hint: "e.g., 'March 2026'"}
+      - {label: "Subtitle", name: "subtitle", widget: "string", hint: "e.g., 'Six months in'"}
+      - {label: "Body", name: "body", widget: "markdown", hint: "Use {% lesson \"Title\" %}content{% endlesson %} for lesson blocks"}
+      - {label: "Tags", name: "tags", widget: "list", default: []}
+      - {label: "Acknowledgments", name: "acknowledgments", widget: "text", required: false}

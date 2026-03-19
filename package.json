@@ -1,0 +1,15 @@
+{
+  "name": "kelsocodes",
+  "version": "1.0.0",
+  "description": "KelsoCodes.com - Personal journal and portfolio site",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "Kelly Loeppky",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
