@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: kellyloeppky-bit/kelso-codes
   branch: main
+  base_url: https://kelsocodes.com
+  auth_endpoint: /.netlify/functions/auth
 
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
