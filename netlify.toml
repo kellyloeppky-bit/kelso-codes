@@ -1,0 +1,16 @@
+[build]
+  # Build command for Eleventy
+  command = "npm install && npm run build"
+
+  # Publish directory (Eleventy output)
+  publish = "_site"
+
+# Redirect rules for clean URLs
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+# Enable Identity and Git Gateway
+[build.environment]
+  NODE_VERSION = "18"
