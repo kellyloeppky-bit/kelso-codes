@@ -5,8 +5,9 @@
   # Publish directory (Eleventy output)
   publish = "_site"
 
-  # Functions directory for Netlify serverless functions
-  functions = "netlify/functions"
+# Netlify Functions configuration
+[functions]
+  directory = "netlify/functions"
 
 # Redirect rules for clean URLs
 [[redirects]]
