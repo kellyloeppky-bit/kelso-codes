@@ -312,6 +312,18 @@ footer p {
   letter-spacing: 0.08em;
 }
 
+footer .copyright {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+footer .copyright span {
+  color: var(--muted);
+}
+
 footer a {
   color: var(--muted);
   text-decoration: none;
