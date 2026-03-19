@@ -3,6 +3,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
 
+  // Ignore admin folder from template processing
+  eleventyConfig.ignores.add("src/admin/**/*");
+
   // Journal collection - sorted by entry number
   eleventyConfig.addCollection("journal", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/journal/*.md")
