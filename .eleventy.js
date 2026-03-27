@@ -9,6 +9,7 @@ module.exports = function(eleventyConfig) {
   // Journal collection - sorted by entry number
   eleventyConfig.addCollection("journal", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/journal/*.md")
+      .filter(item => !item.data.draft)
       .sort((a, b) => {
         return (a.data.entryNumber || 0) - (b.data.entryNumber || 0);
       });
