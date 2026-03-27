@@ -13,6 +13,7 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-entry-{{fields.entryNumber}}"
     fields:
+      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "Toggle off when ready to publish"}
       - {label: "Entry Number", name: "entryNumber", widget: "number", value_type: "int"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
