@@ -2,7 +2,7 @@ backend:
   name: github
   repo: kellyloeppky-bit/kelso-codes
   branch: main
-
+publish_mode: editorial_workflow
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
 
