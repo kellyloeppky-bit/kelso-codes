@@ -19,6 +19,23 @@ collections:
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Date Display", name: "dateDisplay", widget: "string", hint: "e.g., 'March 2026'"}
       - {label: "Subtitle", name: "subtitle", widget: "string", hint: "e.g., 'Six months in'"}
-      - {label: "Body", name: "body", widget: "markdown", hint: "Use {% lesson \"Title\" %}content{% endlesson %} for lesson blocks"}
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Use {% lesson \"Title\" %}content{% endlesson %} for lesson blocks"
+        default: |
+          <!-- Use this format for each lesson point:
+
+          {% lesson "01. Your Title Here" %}
+          Your paragraph content goes here. This keeps the visual styling consistent.
+          {% endlesson %}
+
+          Example:
+
+          {% lesson "01. Start with research" %}
+          Understanding the problem deeply is more valuable than jumping straight to code. Take time to explore before building.
+          {% endlesson %}
+
+          -->
       - {label: "Tags", name: "tags", widget: "list", default: []}
       - {label: "Acknowledgments", name: "acknowledgments", widget: "text", required: false}

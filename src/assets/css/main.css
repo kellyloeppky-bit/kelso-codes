@@ -178,6 +178,41 @@ header {
   margin-bottom: 0.4rem;
 }
 
+/* Ordered lists styling to match lesson block format */
+.post-body ol {
+  list-style: none;
+  counter-reset: lesson-counter;
+  margin: 1.5rem 0;
+}
+
+.post-body ol li {
+  counter-increment: lesson-counter;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--text);
+  position: relative;
+}
+
+.post-body ol li::before {
+  content: counter(lesson-counter, decimal-leading-zero) ". ";
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  display: inline;
+}
+
+.post-body ol li strong:first-child {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .tags {
   margin-top: 2rem;
   display: flex;
