@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="270" height="400" viewBox="200 42 270 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- KelsoCodes Logo Mark (Header Version) -->
+
+  <!-- Vertical stem -->
+  <rect x="210" y="52" width="58" height="288" fill="#C8A96E"/>
+
+  <!-- Upper arm: triangle -->
+  <polygon points="268,52 460,52 268,192" fill="#C8A96E"/>
+
+  <!-- Lower arm: triangle -->
+  <polygon points="268,208 460,340 268,340" fill="#C8A96E"/>
+
+  <!-- Rule separator -->
+  <line x1="210" y1="386" x2="470" y2="386" stroke="#C8A96E" stroke-width="0.6" opacity="0.5"/>
+
+  <!-- Wordmark: KELSO gold, CODES grey -->
+  <text x="340" y="422"
+        text-anchor="middle"
+        font-family="'Courier New', Courier, monospace"
+        font-size="30"
+        font-weight="700"
+        letter-spacing="7">
+    <tspan fill="#C8A96E">KELSO</tspan><tspan fill="#6B6760">CODES</tspan>
+  </text>
+</svg>
