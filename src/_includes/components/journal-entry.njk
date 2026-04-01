@@ -1,5 +1,5 @@
 {%- for post in collections.journal | reverse -%}
-<section class="journal">
+<article class="journal">
   <div class="section-label">Journal — Entry {{ ("00" + post.data.entryNumber).slice(-3) }}</div>
 
   <div class="post-meta">{{ post.data.dateDisplay }} &nbsp;/&nbsp; {{ post.data.subtitle }}</div>
@@ -10,7 +10,7 @@
     {{ post.templateContent | safe }}
 
     {%- if post.data.acknowledgments -%}
-    <p style="color: var(--muted); font-size: 0.88rem;">{{ post.data.acknowledgments }}</p>
+    <p class="acknowledgments">{{ post.data.acknowledgments }}</p>
     {%- endif -%}
 
     {%- if post.data.tags and post.data.tags.length > 0 -%}
@@ -21,7 +21,7 @@
     </div>
     {%- endif -%}
   </div>
-</section>
+</article>
 
 {% include "components/coming-soon.njk" %}
 

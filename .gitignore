@@ -22,3 +22,8 @@ node_modules/
 
 # Eleventy output
 _site/
+
+# Screenshots
+*.png
+*.jpg
+*.jpeg
