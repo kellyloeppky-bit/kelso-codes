@@ -88,6 +88,19 @@ header {
   opacity: 0.85;
 }
 
+header a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+header a:hover {
+  color: var(--accent);
+}
+
 /* HERO */
 .hero {
   padding: 4rem 0 3rem;
