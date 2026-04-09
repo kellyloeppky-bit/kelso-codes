@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+---
+
+<link rel="stylesheet" href="/assets/css/quizes.css">
+
+<div class="container">
+  <header>
+    <img src="/assets/images/logo.svg" alt="KelsoCodes" class="logo">
+    <div class="tagline">Fall in love with the problem. Not the solution.</div>
+    <p><a href="{{ site.linkedIn }}" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  </header>
+
+  <main>
+    <article class="quiz-detail">
+      <div class="section-label">Quiz {{ ("00" + quizNumber).slice(-3) }}</div>
+
+      <div class="quiz-meta">
+        <span class="quiz-week">{{ weekRange }}</span>
+        <span class="quiz-divider">&nbsp;/&nbsp;</span>
+        <span class="quiz-score-display">
+          Score: <strong class="score-highlight">{{ score }}</strong> / {{ totalQuestions }}
+        </span>
+      </div>
+
+      <h1 class="quiz-title">{{ title }}</h1>
+
+      <div class="quiz-body">
+        {{ content | safe }}
+      </div>
+
+      {%- if tags and tags.length > 0 -%}
+      <div class="tags">
+        {%- for tag in tags -%}
+        <span class="tag">{{ tag }}</span>
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+
+      <div class="quiz-back-link">
+        <a href="/quizes/">&larr; Back to all quizzes</a>
+      </div>
+    </article>
+  </main>
+
+  {% include "components/footer.njk" %}
+</div>

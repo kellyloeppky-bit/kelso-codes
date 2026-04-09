@@ -39,3 +39,19 @@ collections:
           -->
       - {label: "Tags", name: "tags", widget: "list", default: []}
       - {label: "Acknowledgments", name: "acknowledgments", widget: "text", required: false}
+  - name: "quizes"
+    label: "Weekly Quizzes"
+    folder: "src/quizes"
+    create: true
+    slug: "{{year}}-{{month}}-quiz-{{fields.quizNumber}}"
+    fields:
+      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "Toggle off when ready to publish"}
+      - {label: "Quiz Number", name: "quizNumber", widget: "number", value_type: "int"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Date Display", name: "dateDisplay", widget: "string", hint: "e.g., 'April 11, 2026'"}
+      - {label: "Week Range", name: "weekRange", widget: "string", hint: "e.g., 'April 7–11, 2026'"}
+      - {label: "Score", name: "score", widget: "number", value_type: "int"}
+      - {label: "Total Questions", name: "totalQuestions", widget: "number", value_type: "int"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["#WeeklyQuiz", "#LearnWithMe"]}
+      - {label: "Body", name: "body", widget: "markdown", hint: "Use Q&A format with ### for questions"}

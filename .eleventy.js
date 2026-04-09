@@ -15,6 +15,15 @@ module.exports = function(eleventyConfig) {
       });
   });
 
+  // Quizes collection - sorted by date descending
+  eleventyConfig.addCollection("quizes", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/quizes/*.md")
+      .filter(item => !item.data.draft)
+      .sort((a, b) => {
+        return new Date(b.data.date) - new Date(a.data.date);
+      });
+  });
+
   // Paired shortcode for lesson blocks
   eleventyConfig.addPairedShortcode("lesson", function(content, title) {
     // Remove wrapping <p> tags if markdown processor added them

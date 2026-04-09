@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+title: Weekly Quizzes
+---
+
+<link rel="stylesheet" href="/assets/css/quizes.css">
+
+<div class="container">
+  <header>
+    <img src="/assets/images/logo.svg" alt="KelsoCodes" class="logo">
+    <div class="tagline">Fall in love with the problem. Not the solution.</div>
+    <p><a href="{{ site.linkedIn }}" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Weekly Quizzes</h1>
+      <p class="bio">
+        Test your knowledge from the week. Each quiz covers key concepts, lessons learned, and insights shared throughout the week.
+      </p>
+    </section>
+
+    {%- if collections.quizes.length > 0 -%}
+    {%- for quiz in collections.quizes -%}
+    <article class="quiz-entry">
+      <div class="section-label">Quiz {{ ("00" + quiz.data.quizNumber).slice(-3) }}</div>
+
+      <div class="post-meta">{{ quiz.data.dateDisplay }} &nbsp;/&nbsp; {{ quiz.data.weekRange }}</div>
+
+      <h2 class="post-title">
+        <a href="{{ quiz.url }}">{{ quiz.data.title }}</a>
+      </h2>
+
+      <div class="quiz-score">
+        Score: <span class="score-value">{{ quiz.data.score }}</span> / {{ quiz.data.totalQuestions }}
+      </div>
+
+      {%- if quiz.data.tags and quiz.data.tags.length > 0 -%}
+      <div class="tags">
+        {%- for tag in quiz.data.tags -%}
+        <span class="tag">{{ tag }}</span>
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+    </article>
+    {%- endfor -%}
+    {%- else -%}
+    <section class="coming-soon">
+      <div class="section-label">Coming Soon</div>
+      <p>
+        <strong>Weekly quizzes are on the way.</strong> Check back soon for knowledge tests and learning challenges.
+      </p>
+    </section>
+    {%- endif -%}
+  </main>
+
+  {% include "components/footer.njk" %}
+</div>

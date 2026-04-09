@@ -1,0 +1,122 @@
+/* Quiz-specific styles */
+
+.quiz-entry {
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.quiz-entry .post-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.quiz-entry .post-title a:hover {
+  color: var(--accent);
+}
+
+.quiz-score {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 1rem 0 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.quiz-score .score-value {
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Quiz detail page styles */
+
+.quiz-detail {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.quiz-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-score-display {
+  color: var(--muted);
+}
+
+.score-highlight {
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.quiz-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+}
+
+.quiz-body {
+  font-size: 0.98rem;
+  color: var(--text);
+  line-height: 1.85;
+}
+
+.quiz-body h3 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 2rem 0 1rem;
+  line-height: 1.5;
+}
+
+.quiz-body ul {
+  list-style: none;
+  margin: 0.75rem 0 1rem 1.5rem;
+  padding: 0;
+}
+
+.quiz-body ul li {
+  margin: 0.4rem 0;
+  color: var(--text);
+}
+
+.quiz-body p strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.quiz-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+.quiz-back-link {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.quiz-back-link a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.quiz-back-link a:hover {
+  color: var(--accent);
+}
