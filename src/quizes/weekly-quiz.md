@@ -1,16 +1,16 @@
 ---
-layout: layouts/quiz.njk
-draft: false
+draft: true
 quizNumber: 1
-title: "Weekly Quiz #1"
+title: 'Weekly Quiz #1'
 date: 2026-04-11
 dateDisplay: April 11, 2026
-weekRange: "April 7–11, 2026"
+weekRange: April 7–11, 2026
 score: 8
 totalQuestions: 10
 tags:
   - '#WeeklyQuiz'
   - '#LearnWithMe'
+layout: layouts/quiz.njk
 ---
 
 ### Q1. What should you create before writing any code for a new project?
