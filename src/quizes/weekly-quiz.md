@@ -1,4 +1,5 @@
 ---
+layout: layouts/quiz.njk
 draft: true
 quizNumber: 1
 title: 'Weekly Quiz #1'
@@ -10,7 +11,6 @@ totalQuestions: 10
 tags:
   - '#WeeklyQuiz'
   - '#LearnWithMe'
-layout: layouts/quiz.njk
 ---
 
 ### Q1. What should you create before writing any code for a new project?
